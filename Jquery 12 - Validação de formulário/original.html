@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+</head>
+<body>
+    
+
+<div class="container">
+
+    <div class="jumbotron p-1 text-white rounded bg-dark mt-5">
+        <div class="py-3 text-center">
+        <h2>Cadastro de usuário</h2>
+        <p class="lead">Código criado para o  <a href="https://serfrontend.com/cursos/bootstrap-4-jquery/index.html" class="text-light"> Curso completo de Bootstrap 4 + jQuery</a></p>
+      </div>
+    </div>
+
+    <form id="myform">
+        <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" class="form-control" name="name" id="name" required minlength="3">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Digite um email" name="email" required>
+            <small id="emailHelp" class="form-text text-muted">Não iremos compartilhar com ninguém</small>
+        </div>
+        <div class="form-group">
+            <label for="senha1">Senha</label>
+            <input type="password" class="form-control" id="senha1" placeholder="Senha" name="senha1" required>
+        </div>
+        <div class="form-group">
+            <label for="senha2">Confirme a Senha</label>
+            <input type="password" class="form-control" id="senha2" placeholder="Senha" name="senha2" required>
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="terms" value="aceito" required name="terms">
+            <label class="form-check-label" for="terms">Aceito os termos e condições</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+</div>
+
+   <script
+	src="https://code.jquery.com/jquery-3.3.1.js"
+	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	crossorigin="anonymous"></script>
+
+    <script src="jquery.validate/jquery.validate.min.js"></script>
+    
+    <script>
+    	$(function(){
+    		
+       
+        
+
+
+            
+    	})
+    </script>
+   
+    
+</body>
+</html>

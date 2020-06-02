@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<!--    <script src="js/jquery-3.3.1.js"></script>-->
+	<script
+	src="https://code.jquery.com/jquery-3.3.1.js"
+	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	crossorigin="anonymous"></script>
+	<style>
+	
+	
+</style>
+
+
+</head>
+<body>
+	
+	<section class="container section">
+		<h1>Percorrer e DOM</h1>
+		<p>percorrendo o DOM utilizando da jQuery</p>
+
+		<div class="container">
+
+			<ul class="enfase container">
+				<li class="enfase2">item 1</li>
+				<li class="enfase2">item 2</li>
+				<li class="enfase2 enfase4">item 3 com enfase4</li>
+				<li class="enfase2">item 4</li>
+				<li class="enfase2">item 5</li>
+				<li>
+					<ul>
+						<li class="enfase2 enfase3">item com enfase2 e enfase3.</li>
+					</ul>
+
+				</li>
+			</ul>
+		</div>
+	</section>
+
+
+	<script>
+			
+	let lis = $('ul.enfase').children('li') //Captura as li (no nível da ul classe .enfase) e converte em um array
+	console.log(lis)
+
+	console.log( $('ul.enfase').find('li') ) //Captura todas li (dentro da ul classe .enfase) e converte em um array
+
+	console.log( $('li').parent() )  //Captura todas li dentro do DOM
+	console.log( $('.enfase4').parent() )  //Captura o objeto ancestral a classe .enfase4 
+	console.log( $('.enfase3').parents('.container') )  //Captura todos os objetos .container ancestrais a classe .enfase3
+	console.log( $('.enfase3').closest('.container') )	//Captura o primeiro elemento que tenha .container ancestral a classe .enfase3
+	console.log( $('.enfase3').parentsUntil('.section') ) //Captura todos os objetos ancestrais a classe .enfase3 até encontrar a classe .section (não inclui a .section) 
+
+	console.log( $('.enfase4').prev() ) //Captura o objeto anterior em relação ao .enfase4 (irmão)
+	console.log( $('.enfase4').next() ) //Captura o próximo objeto em relação ao .enfase4 (irmão)
+	console.log( $('.enfase4').prevAll() ) //Captura os objetos anteriores em relação ao .enfase4 (irmãos)
+	console.log( $('.enfase4').nextAll() ) //Captura os próximos objetos em relação ao .enfase4 (irmãos)
+	console.log( $('.enfase4').siblings() ) //Captura os irmãos do .enfase4
+
+	console.log( $('ul.enfase li').first().nextUntil('.enfase4').add('ul.enfase li.enfase4') ) //Captura os irmãos a partir do primeiro elemento ul.enfase li, até o elemento .enfase4, adicionou o .enfase4 através do .add()
+			
+	</script>
+	</body>
+	</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<!--    <script src="js/jquery-3.3.1.js"></script>-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+  
+    <style>
+        .destaque{
+            color: red;
+        }
+    </style>
+  
+</head>
+<body>
+    
+    <div class="container">
+        
+        <h1>curso Jquery</h1>   
+
+        <input type="text" class="txt" id="txt" placeholder="texto qualquer"><br>
+        <input type="email" class="email" id="email" placeholder="email qualquer"><br>
+        
+        <a href="#" title="qualquer link">Link falso</a> |
+        <a href="#">Link falso</a> |
+        
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+        <p class="destaque">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+        
+        <h2>Seletores jQuery</h2>
+        
+        <ul>
+            <li> item 1</li>
+            <li> item 2</li>
+            <li> item 3
+                <ul>
+                    <li>item 3.1</li>
+                    <li>item 3.2</li>
+                    <li>item 3.3</li>
+                    <li>item 3.4</li>
+                </ul>
+            </li>
+            <li> item 4</li>
+            <li> item 5</li>
+            <li> item 6</li>
+            <li> item 7</li>
+        </ul>
+    
+    </div>
+    
+    
+    <script>
+        $(function(){
+            $('#txt').val('alterado com jquery')  //id
+            $('.email').val('alterado com jquery')  //classe
+            
+            $('p:not(.destaque), li').css('color', '#999')  //tag método css coloca o style inline, not pega todos exceto o que tiver a classe.destaque
+            
+            $('.container > ul > li').css('color', 'black')  //pega a li da primeira ul filha de .container
+            
+            $('.destaque + p').addClass('destaque')  //manipula o próximo elemento depois de .destaque
+
+            $('.destaque ~ p').addClass('destaque')  //manipula os próximos irmãos 
+            
+            $('li:first').css('color', 'green') //manipula o primeiro elemento de li
+
+            $('li:last').css('color', 'green') //manipula o último elemento de li
+            
+            $('p:gt(2)').css({     //pega todos parágrafos maiores que 2
+                'color': 'orange',
+                fontSize: '22px'
+            })
+            
+            $('li:lt(2)').css('fontSize', '30px') //pega todas <li> menores que 2
+            
+            $('a[title]').css('color', 'red')     //Seleciona <a> que tenha atributo title
+            $('a:not([title])').hide()            //Seleciona <a> que não tenha atributo title
+            
+            
+            
+        })  
+    </script>
+</body>
+</html>

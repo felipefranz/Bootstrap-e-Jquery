@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+  </head>
+
+  <body class="bg-light">
+
+    <div class="container">
+      <div class="jumbotron p-31 p-md-2 text-white rounded bg-dark">
+        <div class="py-5 text-center">
+        <h2>Agenda</h2>
+        <p class="lead">Código criado para o  <a href="https://serfrontend.com/cursos/bootstrap-4-jquery/index.html" class="text-light"> Curso completo de Bootstrap 4 + jQuery</a></p>
+      </div>
+      </div>
+      
+
+      <div class="row">
+        
+        <div class="col-sm">
+          <h4 class="mb-3">Agenda de contatos</h4>
+
+          <form>
+            <div class="row">
+              <div class="col-md-6 mb-3 col-lg-3">
+                <label for="name">Nome</label>
+                <input type="text" class="form-control" id="name" autocomplete="off" >                
+              </div>
+              <div class="col-md-6 mb-3 col-lg-3">
+                <label for="username">Usuário</label>
+                <input type="text" class="form-control" id="username" autocomplete="off">
+              </div>
+              <div class="col-md-6 mb-3 col-lg-3">
+                <label for="email">email</label>
+                <input type="email" class="form-control" id="email" autocomplete="off">
+              </div>
+              <div class="col-md-6 mb-3 col-lg-3 d-flex justify-content-end flex-column">
+                <button class="btn btn-primary btn-mds" type="submit">Cadastrar</button>
+              </div>
+            </div>            
+          </form>
+
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Usuário</th>
+                <th scope="col">Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!--<tr>
+                 <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr> -->
+              
+            </tbody>
+          </table>          
+        </div>
+      </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; serfrontend.com</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="https://serfrontend.com/blog/">Blog</a></li>
+          <li class="list-inline-item"><a href="https://serfrontend.com/cursos/">Cupons de desconto</a></li>
+        </ul>
+      </footer>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    
+  </body>
+</html>

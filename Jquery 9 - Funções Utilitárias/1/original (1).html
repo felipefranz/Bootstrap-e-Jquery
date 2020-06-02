@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+        
+</head>
+<body>
+    
+
+<div class="container">
+    
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis casa aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>lorem</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis teste aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>lorem</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis teste aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>lorem</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi casa ut aliquip ex ea commodo
+    consequat. Duis teste aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>lorem</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor javascript incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis teste aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>lorem</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do casa eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis frontend aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id teste est laborum.</p>
+    <p>lorem</p>
+</div>
+   <script
+	src="https://code.jquery.com/jquery-3.3.1.js"
+	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	crossorigin="anonymous"></script>
+
+<script>
+    $('p').each(function(i, el){ //Each percorre array, neste percorre todos elementos 'p'
+        console.log(i, el)
+        $(el).prepend(i + ' - ')
+        return "teste" //não tem efeito algum
+    })
+    
+    $.each( $('p'), function(i, el){  //Each percorre array, neste percorre todos elementos 'p' 
+        console.log(i, el)
+        $(el).append(' <b>alterado com $.each()</b>')
+        return "teste" //não tem efeito algum
+    } )
+    
+    let arr = [2,5,8, true, "teste"]  //array teste
+    let obj = {
+        nome: "daniel",
+        sobrenome: "tapias morales",
+        profissao: "instrutor de programação"
+    }  //objeto teste
+    
+    $.each(arr, function(i, val){ //each percorre array
+        console.log(i, val)
+    })
+    
+    $.each(obj, function(key, val){ //each percorre objeto
+        console.log(key, val)
+    })
+    
+    let map1 = $('p').map(function(i, el){ //map cria um array retorna um objeto jquery, com o Get() retorna um array de strings, o reverse reverte a ordem de dados do array
+        console.log(i, el) //i = indice; el = elemento
+        return $(el).html()
+    }).get().reverse();
+    
+    $('p').remove() // apaga todos os p
+    
+    let map2 = $.map(map1, function(el, i){ //fazendo a chamada $.map é possível aceita como primeiro parâmentro um array e o segundo parâmetro função que trabalha a array
+        console.log(i, el)
+        return $('<p>').html(el)
+    })
+    
+    $('.container').append(map2); //adicionou a div 
+    
+    console.log('-----------------')
+    let arr2 = $.grep( $('p'), function(el, i){ //grap funciona como um filtro, aceita como primeiro parâmentro um array e o segundo parâmetro função que trabalha a array
+        return $(el).text().indexOf('casa') >= 0   //encontra linhas com a palavra 'casa' e só adiciona no array os parâgrafos que contenham a palavra buscada
+    //}, true) // com o true ele retorna tudo que for falso na validação acima
+    } ).reverse() //muda a ordem do array de paragrafos
+    
+    $('.container').empty().append( $.map(arr2, function(el, i){ //empty() apaga o conteúdo interno da div, append() recebe o array retornado do $.map
+        return $('<p>').html(el)  //retorna um array de objetos jquery
+    }) )
+    
+    $('.container').append( $('<p>').html( $.param(obj) ) ) //$.param() transforma um objeto em uma string
+    
+    
+</script>
+   
+    
+</body>
+</html>

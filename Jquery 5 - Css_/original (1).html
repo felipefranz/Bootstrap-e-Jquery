@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <style>
+    html, body{
+        height: 100%;
+    }
+    body{
+    	background: #e0dbdb;
+    }
+
+    
+    .parent{
+        width: 300px;
+        height: 230px;
+        border: 5px solid black;
+        background: rgba(0,0,0,.2);
+        margin: 25px;
+    }
+
+    .child{
+        width: 90%;
+        margin: 10px auto;
+        border: 5px solid green;
+        background: rgba(0,0,0,.2);
+    }
+
+    #size{
+        width: calc(100% - 390px);
+        height: calc(100vh - 320px);
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background-color: white;
+        padding: 20px;
+        margin: 30px;
+        border: 10px solid rgba(0,0,0,.3);
+
+    }
+
+    #btnVoltar{
+        position: fixed;
+        top: 50%; right: 0;
+        display: none;
+    }
+    
+    </style>
+
+    
+</head>
+<body>
+    
+    <div class="parent">
+        div pai 
+        <div class="pos"></div>
+        <div class="child">div filha
+            <div class="pos"></div>
+        </div>
+    </div>
+
+    <div class="parent">
+        div pai 
+        <div class="pos"></div>
+        <div class="child">div filha
+            <div class="pos"></div>
+        </div>
+    </div>
+
+    <div class="parent">
+        div pai 
+        <div class="pos"></div>
+        <div class="child">div filha
+            <div class="pos"></div>
+        </div>
+    </div>
+     <div class="parent">
+        div pai 
+        <div class="pos"></div>
+        <div class="child">div filha
+            <div class="pos"></div>
+        </div>
+    </div>
+    <div class="parent">
+        div pai 
+        <div class="pos"></div>
+        <div class="child">div filha
+            <div class="pos"></div>
+        </div>
+    </div>
+    <div class="parent">
+        div pai 
+        <div class="pos"></div>
+        <div class="child">div filha
+            <div class="pos"></div>
+        </div>
+    </div>
+
+    <div id="size">
+
+    </div>
+
+    <button id="btnVoltar" class="btn btn-primary">Vai para o topo</button>
+
+   <script
+	src="https://code.jquery.com/jquery-3.3.1.js"
+	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	crossorigin="anonymous"></script>
+
+    <script>
+        
+        $(function(){
+            $('.parent, .child').on('click', function(e){
+                e.stopPropagation(); //para evitar que e capture o outros elementos dentro da sequencia do escopo .parent, .child
+                let coords = $(this).offset() //Traz a distancia do objeto em relação as margens do DOM sem considerar margens do objeto
+                $(this).children('.pos').html( `offset(): left: ${coords.left} | top: ${coords.top} <br>` ) //imprime coordenadas 
+                
+                let coodsPos = $(this).position() //Traz a distancia do objeto em relação as margens do DOM, ele considera a position subtraindo as margens do objeto
+                $(this).children('.pos').append( `position():left: ${coodsPos.left} | top: ${coodsPos.top}<br>` ) //imprime coordenadas
+            })
+            
+            $('.parent:eq(1)').css('position', 'relative') //Traz a distancia do objeto em relação ao objeto que contém a classe .parent
+            
+            $('.parent:eq(2)').css({ //Traz a distancia do objeto em relação ao objeto que contém a classe .parent
+                position: 'fixed', /*fixed o elemento sempre fica na tela mesmo scrollando para baixo o documento*/
+                top: '0',
+                left: '330px'
+            })
+            
+            $('#size').on('click', function(e){
+                let w = $(this).width();  //Captura o valor width interno do objeto
+                let h = $(this).height(); //Captura o valor height interno do objeto
+                $(e.target).html(` width: ${w} | height: ${h}<br> `)
+                
+                let w2 = $(this).innerWidth();  //Captura o valor width + padding do objeto
+                let h2 = $(this).innerHeight(); //Captura o valor height + padding do objeto
+                $(e.target).append(` innerWidth: ${w2} | innerHeight: ${h2}<br> `)
+                
+                let w3 = $(this).outerWidth();  //Captura o valor width + padding + border do objeto
+                let h3 = $(this).outerHeight(); //Captura o valor height + padding + border do objeto
+                $(e.target).append(` outerWidth: ${w3} | outerHeight: ${h3}<br> `)
+                
+                let w4 = $(this).outerWidth(true);  //Captura o valor width + padding + border + margin do objeto
+                let h4 = $(this).outerHeight(true); //Captura o valor height + padding + border + margin do objeto
+                $(e.target).append(` outerWidth(true): ${w4} | outerHeight(true): ${h4}<br> `)
+            })
+            
+            $('.parent:eq(3)').offset({top: 50, left: 150}) //Acrescenta a distancia do objeto em relação as margens do DOM
+            
+            var documento = $(document).height(); //Retorna a altura do documento;
+            var alturaJanela = $(window).height(); //Retorna a altura da janela;
+            var maxScroll = documento - alturaJanela; //Máximo que pode scrollar no documento
+            
+            $(document).on('scroll', function(){
+                
+                documento = $(document).height(); //Retorna a altura do documento;
+                alturaJanela = $(window).height(); //Retorna a altura da janela;
+                maxScroll = documento - alturaJanela; //Máximo que pode scrollar no documento
+                
+                var meuScroll = $(document).scrollTop(); //retorna o valor do scroll no documento
+                
+                if(maxScroll - meuScroll <= 20){ //Se chegar no final da página
+                    $('#btnVoltar').fadeIn(500) //exibe botão voltar
+                } else {
+                    $('#btnVoltar').fadeOut(500) //esconde botão voltar
+                }
+            })
+            
+            $('#btnVoltar').on('click', function(){ //Clicando no #btnVoltar scroll top
+                //$(document).scrollTop(0)
+                $('html, body').animate({scrollTop: 0}, 1000)
+            })
+            
+            $(window).on('resize', function(){ //Quando houver um redimensionamento de janela
+                $(document).trigger('scroll') //desparou evento scroll no document
+            })
+            
+        })
+    	
+    </script>
+   
+    
+</body>
+</html>

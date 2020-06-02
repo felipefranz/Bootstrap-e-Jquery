@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <style>
+
+    p{
+        margin-top: 1rem;
+    }
+    
+    p .destaq{
+        background: yellow
+    }
+    
+    </style>
+
+    
+</head>
+<body>
+    
+
+<div class="container">
+
+    <input type="text" class="form-control my-5">
+    
+    <div class="content">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis casa aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>lorem</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis teste aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>lorem</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis teste aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>lorem</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi casa ut aliquip ex ea commodo
+    consequat. Duis teste aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>lorem</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor javascript incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis teste aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>lorem</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do casa eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis frontend aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id teste est laborum.</p>
+    <p>lorem</p>
+    </div>
+</div>
+   <script
+	src="https://code.jquery.com/jquery-3.3.1.js"
+	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	crossorigin="anonymous"></script>
+
+    <script>
+        
+        let $p = $('p'); //captura todas linhas do dom
+        let filtrado; //array dee linhas filtradas
+        $(':input').on('keyup', filtrar) // toda vez que digitar uma letra no input chama a função filtrar
+        
+        function filtrar(e){ //Recebe elemento do DOM
+            let val = $(this).val();  //recebe o valor digitado no input
+            if(val.length >= 3){  //valor maior ou igual a 3
+                
+                filtrado = $.grep( $p.clone(), function(el, i){  //faz um .clone() para não alterar a variável $p
+                    return $(el).text().indexOf(val) >= 0
+                } ) //array de strings parágrafos filtrados
+                
+                if(filtrado.length){ //verifica se existe dado
+                    $('.content').empty().append( $.map( filtrado, (el, i) => { //(el, i) => é o mesmo que function(el, i)
+                        $(el).html( $(el).text().replace(val, '<span class="destaq"> '+ val +'</span>') ) //altera o valor do array filtrado, com o .replace adicionando um <span> ao elemento
+                        return $(el)
+                    } ) )
+                } else {  //se filtrado estiver vazio exibe mensagem "nenhum resultado encontrado"
+                    $('.content').empty().append( $('<p>').text('nenhum resultado encontrado').css('text-align', 'center') )
+
+                }
+                
+            } else { //se valor digitado menor que 3 limpa div .content e alimenta com as linhas salvas na variável $p
+                $('.content').empty().append($p)
+                //$('.destaq').unwrap() //.unwrap() da um desfazer no elemento selecionado
+            }
+        }
+    	
+    </script>
+   
+    
+</body>
+</html>
