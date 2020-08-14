@@ -1,0 +1,30 @@
+﻿
+<!DOCTYPE html>
+
+<body >
+<img src="https://www.portal-hro.com.br/ws/txt/img/header#header#.png"Width="100%">          
+<div >        
+<div>   
+		<center>       
+           <!-- <h1>
+                #titulo#
+            </h1>
+            <img src="https://www.portal-hro.com.br/ws/txt/img/barra#barra#.png" >-->   
+    </center>
+	<br />
+	<br />
+	<div>
+		<strong>Conforme sua solicitação enviamos uma nova senha de acesso.</strong><br>
+		
+			#conteudo#
+		<BR>
+		<strong>Por medida de segurança recomendamos que você substitua esta senha por uma de sua preferência.</strong><br><br><br>
+	</div>
+</div>
+                </div>
+                
+<img src="https://www.portal-hro.com.br/ws/txt/img/footer#footer#.png" Width="100%">      
+
+</body>
+</html>
+

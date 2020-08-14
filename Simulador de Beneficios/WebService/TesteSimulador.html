@@ -1,0 +1,734 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="ISO-8859-1">
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="shortcut icon" href="res/img/icon.ico" type="image/x-icon" />
+
+    <link href="https://www.portal-hro.com.br/portal/jslib/SimuladorBeneficios/Simulador_Benef/res/css/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+    <!--<link href="../css/main.simulador.mobile.css" rel="stylesheet" />     -->
+    <link href="https://www.portal-hro.com.br/portal/jslib/SimuladorBeneficios/Simulador_Benef/res/css/mobile/main.simulador.mobile.css" rel="stylesheet">
+    <link href="https://www.portal-hro.com.br/portal/jslib/SimuladorBeneficios/Simulador_Benef/res/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://www.portal-hro.com.br/portal/jslib/SimuladorBeneficios/Simulador_Benef/res/css/bootstrap-theme.min" rel="stylesheet">
+     <!--<link href="css/normalize.css" rel="stylesheet">-->
+
+    <title>Simulador de Beneficios Mobile</title>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--[if gte IE 9]>
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <![endif]-->
+    <!--<![if !IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <![endif]>-->
+
+</head>   
+
+
+<body>
+    
+
+    <div class="col-xs-12 col-sm-12 col-md-12" id="simulate-content">
+        <div class="row" id="secPermission">
+            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <div id="secPermission_acessoNegado">
+                    <h2 style="text-align: center; margin-bottom: 20px; margin-top: 0px;">Carregando <img src="https://www.portal-hro.com.br/portal/jslib/SimuladorBeneficios/Simulador_Benef/res/img/carregamento.gif" alt="loading"></h2>
+                </div>
+            </div>
+            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+        </div>
+        <div class="row hide" id="secMsg">
+            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+            <div class="col-xs-12 col-sm-10 col-md-10" align="center">
+                <div class="panel panel-bg panel-default panel-default-bg">
+                    <div class="panel-body panel-body-bg">
+                        <span id="secMsg_msg1"></span>
+                        <p align="right"><span id="secMsg_dtSaldoFoot"></span><span id="dtSaldoFoot"></span></p>
+                        <p align="right"><span id="secMsg_dtNowFoot"></span><span id="dtNowFoot"></span></p>
+                    </div>
+                </div>
+                <div class="row step" id="stepOne">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <a id="stepOne-btn-down" type="button" class="btn btn-default col-xs-12 col-sm-12 col-md-12" role="button">
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+        </div>
+        <div class="row hide" id="secInfo">
+            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <div class="panel panel-bg panel-primary">
+                    <div class="panel-heading panel-heading-bg"><h4><span id="secInfo_iPessoais"></span></h4></div>
+                    <div class="panel-body panel-body-bg">
+                        <div class="row">
+                            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+                            <div class="col-xs-12 col-sm-10 col-md-10" align="left">
+                                <form class="form-horizontal">
+                                    <div class="form-group" align="left">
+                                        <label for="name" class="col-xs-12 col-sm-3 col-md-3 control-label"><span id="secInfo_name"></span></label>
+                                        <div class="col-xs-12 col-sm-9 col-md-9"><input type="text" class="form-control" id="name" style="color:#000000;" readonly></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cpf" class="col-xs-12 col-sm-3 col-md-3 control-label"><span id="secInfo_cpf"></span></label>
+                                        <div class="col-xs-12 col-sm-9 col-md-9"><input type="text" class="form-control" id="cpf" style="border:0; color:#000000;" readonly></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="birth" class="col-xs-12 col-sm-3 col-md-3 control-label"><span id="secInfo_birth"></span></label>
+                                        <div class="col-xs-12 col-sm-9 col-md-9"><input type="text" class="form-control" id="birth" style="border:0; color:#000000;" readonly></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dtadmission" class="col-xs-12 col-sm-3 col-md-3 control-label"><span id="secInfo_dtAdmission"></span></label>
+                                        <div class="col-xs-12 col-sm-9 col-md-9"><input type="text" class="form-control" id="dtadmission" style="border:0; color:#000000;" readonly></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dtaccess" class="col-xs-12 col-sm-3 col-md-3 control-label"><span id="secInfo_dtAccess"></span></label>
+                                        <div class="col-xs-12 col-sm-9 col-md-9"><input type="text" class="form-control" id="dtaccess" style="border:0; color:#000000;" readonly></div>
+                                    </div>
+                                    <div class="form-group" id="grpTermination">
+                                        <label for="dttermination" class="col-xs-12 col-sm-3 col-md-3 control-label"><span id="secInfo_dtTermination"></span></label>
+                                        <div class="col-xs-12 col-sm-9 col-md-9"><input type="text" class="form-control" id="dttermination" style="border:0; color:#000000;" readonly></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="fldstatus" class="col-xs-12 col-sm-3 col-md-3 control-label"><span id="secInfo_fldStatus"></span></label>
+                                        <div class="col-xs-12 col-sm-9 col-md-9"><input type="text" class="form-control" id="fldstatus" style="border:0; color:#000000;" readonly></div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!--<div class="hide">
+                              <div class="col-xs-0 col-sm-0 col-md-0">
+                                <div class="row row-linha">&nbsp</div>
+                                <div class="row row-linha">&nbsp</div>
+                                <div class="row row-linha">&nbsp</div>
+                                <img src="res/img/info.png" id="imginfo" style="width:180px;height:auto" class="img-circle">
+                              </div>
+                            </div>-->
+                            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+        </div>
+        <div class="row hide" id="secSaldo">
+            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <div class="alert alert-info"><p>Veja abaixo seu saldo acumulado até o momento</p><span id="secSaque_info"></span></div>
+                <div class="panel panel-bg panel-default">
+                    <div class="panel-heading panel-heading-bg"><h4><span id="secSaldo_sContas"></span></h4></div>
+                    <div class="panel-body panel-body-bg">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12" align=left>
+                                <label for="taxopt"><span id="secSaldo_taxopt"></span></label>
+                                <input type="text" id="taxopt" size="15" style="border:0;" readonly>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12" align=left>
+                                <label for="dtbal"><span id="secSaldo_dtbal"></span></label>
+                                <input type="text" id="dtbal" size="10" style="border:0;" readonly>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4 col-md-4">
+                                <div class="panel panel-bg panel-default" style="background-color: #C1DBE8; margin: 8px 0px 8px 0px; padding: 2px 4px 2px 4px; ">
+                                    <div class="panel panel-body-bg" style="background-color: #C1DBE8;">
+                                        <p align="center"><span id="secSaldo_fldMyBalance"></span></p>
+                                        <p align="center" id="fldMyBalance" style="font-weight:bold;"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4">
+                                <div class="panel panel-bg panel-default" style="background-color: #C1DBE8; margin: 8px 0px 8px 0px; padding: 2px 4px 2px 4px; ">
+                                    <div class="panel panel-body-bg" style="background-color: #C1DBE8;">
+                                        <p align="center"><span id="secSaldo_fldCompanyBalance"></span></p>
+                                        <p align="center" id="fldCompanyBalance" style="font-weight:bold;"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-4">
+                                <div class="panel panel-bg panel-default" style="background-color: #AAE6CD; margin: 8px 0px 8px 0px; padding: 2px 4px 2px 4px; ">
+                                    <div class="panel panel-body-bg" style="background-color: #AAE6CD;">
+                                        <p align="center"><span id="secSaldo_fldPortability"></span></p>
+                                        <p align="center" id="fldPortability" style="font-weight:bold;"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row step" id="stepTwo">
+
+                    <div class="col-xs-6 col-sm-6 col-md-6" style="padding: 0px 5px;">
+                        <a id="stepTwo-btn-up" type="button" class="btn btn-default col-xs-12 col-sm-12 col-md-12" role="button">
+                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                        </a>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6" style="padding: 0px 5px;">
+                        <a id="stepTwo-btn-down" type="button" class="btn btn-default col-xs-12 col-sm-12 col-md-12" role="button">
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+        </div>
+        <div class="row hide" id="secContrib">
+            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <div class="alert alert-info">Simule abaixo suas contribuições futuras ao plano.<!--<span id="secContrib_nomePlan"></span>--></div>
+                <div class="panel panel-bg panel-default">
+                    <div class="panel-heading panel-heading-bg"><h4><span id="secContrib_cPlan"></span></h4></div>
+                    <div class="panel-body panel-body-bg">
+                        <div class="row" id="secSalURP">
+                            <div class="col-xs-12 col-sm-12 col-md-12" align=left>
+                                <label for="salary"><span id="secContrib_salary"></span></label>
+                                <input type="text" id="salary" size="15" style="border:0;" readonly>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12" align=left>
+                                <label for="urp"><span id="secContrib_urp"></span></label>
+                                <input type="text" id="urp" size="10" style="border:0;" readonly>
+                            </div>
+                        </div>
+                        <div id="gridContrib"></div>
+                    </div>
+                </div>
+                <div class="row step" id="stepThree">
+
+                    <div class="col-xs-6 col-sm-6 col-md-6" style="padding: 0px 5px;">
+                        <a id="stepThree-btn-up" type="button" class="btn btn-default col-xs-12 col-sm-12 col-md-12" role="button">
+                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                        </a>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-6 col-md-6" style="padding: 0px 5px;">
+                        <a id="stepThree-btn-down" type="button" class="btn btn-default col-xs-12 col-sm-12 col-md-12" role="button">
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+
+        </div>
+        <div class="row hide" id="secHipot">
+            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <div class="alert alert-info"><span id="secHipot_msg1"></span></div>
+                <div class="panel panel-bg panel-default">
+                    <div class="panel-heading panel-heading-bg"><h4><span id="secHipot_simulation"></span></h4></div>
+                    <div class="panel-body panel-body-bg">
+                        <div class="row">
+                            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+                            <div class="col-xs-12 col-sm-10 col-md-10"><span id="secHipot_barra"></span></div>
+                            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+                        </div>
+                        <div class="row row-linha">&nbsp</div>
+                        <div class="row">
+                            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+                            <div class="col-xs-12 col-sm-12 col-md-7">
+                                <div class="row">
+                                    <div class="col-xs-1 col-sm-2 col-md-2"></div>
+                                    <div class="col-xs-10 col-sm-8 col-md-8" id="sliderIdade"></div>
+                                    <div class="col-xs-1 col-sm-2 col-md-2"></div>
+                                </div>
+                                <div class="row row-linha">&nbsp</div>
+                                <div class="row">
+                                    <div class="col-xs-2 col-sm-2 col-md-2"></div>
+                                    <div class="col-xs-10 col-sm-10 col-md-10">
+                                        <label for="age"><span id="secHipot_age"></span></label>
+                                        <input type="text" id="age" size="6" style="border:0; color:#3399FF; font-weight:bold;" readonly>
+                                        <input type="text" id="dtage" size="26" style="border:0; color:#000000;" readonly>
+                                    </div>
+                                    <div class="col-xs-0 col-sm-0 col-md-0"></div>
+                                </div>
+                                <div class="row row-linha">&nbsp</div>
+                                <div class="row">
+                                    <div class="col-xs-1 col-sm-2 col-md-2"></div>
+                                    <div class="col-xs-10 col-sm-8 col-md-8" align="center">
+                                        <div class="alert alert-success" role="alert" id="msgBenefOK2" style="padding: 6px">
+                                            <span id="msgBenefOK_text"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-1 col-sm-2 col-md-2"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-2 col-sm-2 col-md-2"></div>
+                                    <div class="col-xs-10 col-sm-10 col-md-10">
+                                        <label for="meta"><span id="secHipot_meta"></span></label>
+                                        <!--<input type="text" id="meta" size="8" style="border:0;" readonly>-->
+                                        <select class="form-control input-sm" id="meta" size="1" style="width:80px;"></select>
+                                    </div>
+                                    <div class="col-xs0 col-sm-0 col-md-0"></div>
+                                </div>
+                                <div class="row row-linha">&nbsp</div>
+                                <div class="row">
+                                    <div class="col-xs-2 col-sm-2 col-md-2"></div>
+                                    <div class="col-xs-8 col-sm-8 col-md-8">
+                                        <div class="panel panel-bg panel-default panel-default-bg">
+                                            <div class="panel-body panel-body-bg">
+                                                <p align="justify"><span id="secHipot_msg2"></span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="secCrescSal">
+                                    <div class="row">
+                                        <div class="col-xs-2 col-sm-2 col-md-2"></div>
+                                        <div class="col-xs-10 col-sm-10 col-md-10">
+                                            <label for="salgrow"><span id="secCrescSal_salgrow"></span></label>
+                                            <!--<input type="text" id="salgrow" size="8" style="border:0;" readonly>-->
+                                            <select class="form-control input-sm" id="salgrow" size="1" style="width:80px;"></select>
+                                        </div>
+                                        <div class="col-xs-0 col-sm-0 col-md-0"></div>
+                                    </div>
+
+                                    <div class="row row-linha">&nbsp</div>
+                                    <div class="row">
+                                        <div class="col-xs-2 col-sm-2 col-md-2"></div>
+                                        <div class="col-xs-8 col-sm-8 col-md-8">
+                                            <div class="panel panel-bg panel-default panel-default-bg">
+                                                <div class="panel-body panel-body-bg">
+                                                    <p align="justify"><span id="secCrescSal_msg1"></span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-0 col-md-3">
+                                <div class="row">
+                                    <div class="col-xs-0 col-sm-0 col-md-0"></div>
+                                    <div class="hide col-xs-0 col-sm-10 col-md-10">
+                                        <div class="visible-xs visible-md visible-lg"><img src="https://www.portal-hro.com.br/portal/jslib/SimuladorBeneficios/Simulador_Benef/res/img/30.png" id="img30" style="width:140px;height:auto" class="img-circle"></div>
+                                        <div class="visible-xs visible-md visible-lg"><img src="https://www.portal-hro.com.br/portal/jslib/SimuladorBeneficios/Simulador_Benef/res/img/40.png" id="img40" style="width:140px;height:auto" class="img-circle"></div>
+                                        <div class="visible-xs visible-md visible-lg"><img src="https://www.portal-hro.com.br/portal/jslib/SimuladorBeneficios/Simulador_Benef/res/img/54.png" id="img54" style="width:140px;height:auto" class="img-circle"></div>
+                                        <div class="visible-xs visible-md visible-lg"><img src="https://www.portal-hro.com.br/portal/jslib/SimuladorBeneficios/Simulador_Benef/res/img/75.png" id="img75" style="width:140px;height:auto" class="img-circle"></div>
+                                    </div>
+                                    <div class="col-xs-0 col-sm-2 col-md-2"></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+                        </div>
+                        <div class="row row-linha">&nbsp</div>
+                        <div class="row">
+                            <div class="col-xs-0 col-sm-2 col-md-2"></div>
+                            <div class="col-xs-12 col-sm-8 col-md-8" align=center>
+                                <a type="button" id="CalcBenef" data-loading-text="Simulando..." data-complete-text="Pronto!" class="btn btn-primary" autocomplete="off">
+                                    Simular Benefício
+                                </a>
+                            </div>
+                            <div class="col-xs-0 col-sm-2 col-md-2"></div>
+                        </div>
+                        <div class="row row-linha">&nbsp</div>
+                        <div class="row">
+                            <div class="col-xs-0 col-sm-2 col-md-2"></div>
+                            <div class="col-xs-12 col-sm-8 col-md-8" align=center>
+                                <div class="alert alert-info" role="alert" id="msgBenefOK">
+                                    Você adquiriu direito ao Benefício de Aposentadoria, <a class="alert-link">clique aqui</a> e confira!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row step" id="stepFour">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <a id="stepFour-btn-up" type="button" class="btn btn-default col-xs-12 col-sm-12 col-md-12" role="button">
+                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+        </div>
+        <div class="row hide" id="secSimulation">
+            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <div>
+                    <div>
+                        <div class="row" id="secBenefApos">
+                            <div class="col-xs-0 col-sm-0 col-md-0"></div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="panel panel-bg panel-default">
+                                    <div class="panel-heading panel-heading-bg"><h4><span id="secBenefApos_benefApos"></span></h4></div>
+                                    <div class="panel-body panel-body-bg">
+                                        <!--<div class="row">
+                                          <div class="col-xs-0 col-sm-3 col-md-3"></div>
+                                          <div class="col-xs-12 col-sm-6 col-md-6">
+                                                                <div class="panel panel-bg panel-default" style="background-color: #CCFFCC; margin: 8px 0px 8px 0px; padding: 2px 4px 2px 4px; ">
+                                                                    <div class="panel-body panel-body-bg">
+                                                                        <p align="center">Meu Saldo de Aposentadoria Futuro</p>
+                                                                        <p align="center" id="fldMyBenBal" style="font-weight:bold;"></p>
+                                                                    </div>
+                                                                </div>
+                                                              </div>
+                                          <div class="col-xs-0 col-sm-3 col-md-3"></div>
+                                        </div>
+                                        <div class="row row-linha">&nbsp</div>-->
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12" id="secBenefAnterior">
+                                                <div class="panel panel-bg panel-default">
+                                                    <div class="panel-body panel-body-bg">
+                                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                                            <label for="UltBenef"><span id="secBenefAnterior_ultBenef"></span></label>
+                                                            <input type="text" id="UltBenef" style="border:0; color:#3399FF; font-weight:bold;" readonly>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                                            <label for="RecebAtual"><span id="secBenefAnterior_recebAtual"></span></label>
+                                                            <input type="text" id="RecebAtual" style="border:0; color:#3399FF; font-weight:bold;" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12" id="secSaque">
+                                                <div class="alert alert-info"><span id="secSaque_msg1"></span></div>
+                                                <div class="panel panel-bg panel-default panel-default-bg">
+                                                    <div class="panel-body panel-body-bg">
+                                                        <div class="row">
+                                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                            <div class="col-xs-10 col-sm-10 col-md-10">
+                                                                <label for="fldMyBenBal"><span id="secSaque_fldMyBenBal"></span></label>
+                                                                <input type="text" id="fldMyBenBal" style="border:0; color:#3399FF; font-weight:bold;" readonly>
+                                                            </div>
+                                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                        </div>
+                                                        <div class="row row-linha">&nbsp</div>
+                                                        <div class="row">
+                                                            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+                                                            <div class="col-xs-12 col-sm-10 col-md-10"><span id="secSaque_barra"></span></div>
+                                                            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+                                                        </div>
+                                                        <div class="row row-linha">&nbsp</div>
+                                                        <div class="row">
+                                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                            <div class="col-xs-10 col-sm-10 col-md-10" id="sliderSaque"></div>
+                                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                        </div>
+                                                        <div class="row row-linha">&nbsp</div>
+                                                        <div class="row">
+                                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                            <div class="col-xs-5 col-sm-5 col-md-10">
+                                                                <label for="irvalue"><span id="secSaque_percSaque"></span></label>
+                                                                <input type="text" id="wdwperc" style="border:0; color:#3399FF; width: 80%; font-weight:bold;" readonly>
+                                                            </div>
+                                                            <div class="col-xs-5 col-sm-5 col-md-10">
+                                                                <label for="irvalue"><span id="secSaque_sBruto"></span></label>
+                                                                <input type="text" id="wdwvalue" style="border:0; color:#339933; width: 125%; font-weight:bold;" readonly>
+                                                            </div>
+                                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                        </div>
+                                                        <!-- <div class="row">
+                                                           <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                           <div class="col-xs-10 col-sm-10 col-md-10">
+                                                             <label for="irvalue"><span id="secSaque_sBruto"></span></label>
+                                                             <input type="text" id="wdwvalue" style="border:0; color:#339933; font-weight:bold;" readonly>
+                                                           </div>
+                                                           <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                         </div> -->
+                                                        <!--<div class="row">
+                                                          <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                          <div class="col-xs-10 col-sm-10 col-md-10">
+                                                            <label for="irvalue"><span id="secSaque_irSaque"></span></label>
+                                                            <input type="text" id="wdwirvalue" style="border:0; color:#FF5050; font-weight:bold;" readonly>
+                                                          </div>
+                                                          <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                        </div>
+                                                        <div class="row">
+                                                          <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                          <div class="col-xs-10 col-sm-10 col-md-10">
+                                                            <label for="irvalue"><span id="secSaque_sLiquido"></span></label>
+                                                            <input type="text" id="wdwnet" style="border:0; color:#3399FF; font-weight:bold;" readonly>
+                                                          </div>
+                                                          <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                        </div>-->
+                                                    </div>
+                                                </div>
+                                                <div class="alert alert-danger" role="alert" id="secSaque_msg2"></div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12" id="tamBeneBox">
+                                                <div class="alert alert-info"><span id="tamBeneBox_msg1"></span></div>
+                                                <div class="panel panel-bg panel-default panel-default-bg">
+                                                    <div class="panel-body panel-body-bg">
+                                                        <div class="row">
+                                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                            <div class="col-xs-10 col-sm-10 col-md-10">
+                                                                <label for="irvalue"><span id="tamBeneBox_remainBenBal"></span></label>
+                                                                <input type="text" id="remainBenBal" style="border:0; color:#3399FF; font-weight:bold;" readonly>
+                                                            </div>
+                                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                        </div>
+                                                        <div class="row row-linha">&nbsp</div>
+                                                        <div class="row">
+                                                            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+                                                            <div class="col-xs-12 col-sm-10 col-md-10"><span id="tamBeneBox_bMensal"></span></div>
+                                                            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+                                                        </div>
+                                                        <div class="row row-linha">&nbsp</div>
+                                                        <div class="row">
+                                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                            <div class="col-xs-10 col-sm-10 col-md-10">
+                                                                <div class="text" id="radio">
+                                                                    <div id="groupPerc" class="col-xs-12 col-sm-12 col-md-12">
+                                                                        <input type="radio" id="perc" name="radio" checked="checked">
+                                                                        <label for="perc"><span id="tamBeneBox_perc"></span></label>&nbsp;&nbsp;
+                                                                    </div>
+                                                                    <div id="groupPrazo" class="col-xs-12 col-sm-12 col-md-12">
+                                                                        <input type="radio" id="prazo" name="radio">
+                                                                        <label for="prazo"><span id="tamBeneBox_prazo"></span></label>
+                                                                    </div>
+                                                                    <div id="groupRenda" class="col-xs-12 col-sm-12 col-md-12">
+                                                                        <input type="radio" id="renda" name="radio">
+                                                                        <label for="renda"><span id="tamBeneBox_renda"></span></label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                        </div>
+                                                        <div class="row row-linha">&nbsp</div>
+                                                        <div class="row">
+                                                            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+                                                            <div class="col-xs-12 col-sm-10 col-md-10"><span id="tamBeneBox_barra"></span></div>
+                                                            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+                                                        </div>
+                                                        <div class="row row-linha">&nbsp</div>
+                                                        <div class="row">
+                                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                            <div class="col-xs-10 col-sm-10 col-md-10" id="slider"></div>
+                                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                        </div>
+                                                        <div class="row row-linha">&nbsp</div>
+                                                        <div class="row">
+                                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                            <div class="col-xs-10 col-sm-10 col-md-10">
+                                                                <label for="pmt"><span id="tamBeneBox_pmt"></span></label>
+                                                                <input type="text" id="pmt" style="border:0; color:#3399FF; font-weight:bold;" readonly>
+                                                            </div>
+                                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                            <div class="col-xs-10 col-sm-10 col-md-10">
+                                                                <label for="amount"><span id="tamBeneBox_amount"></span></label>
+                                                                <input type="text" id="amount" style="border:0; color:#339933; font-weight:bold;" readonly>
+                                                            </div>
+                                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                            <div class="col-xs-10 col-sm-10 col-md-10">
+                                                                <label for="irvalue"><span id="tamBeneBox_benefIrValue"></span></label>
+                                                                <input type="text" id="benefirvalue" style="border:0; color:#FF5050; font-weight:bold;" readonly>
+                                                            </div>
+                                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                        </div>
+                                                        <!--<div class="row">
+                                                          <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                          <div class="col-xs-10 col-sm-10 col-md-10">
+                                                            <label for="irvalue"><span id="tamBeneBox_benefNet"></span></label>
+                                                            <input type="text" id="benefnet" style="border:0; color:#3399FF; font-weight:bold;" readonly>
+                                                          </div>
+                                                          <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                                        </div>-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div id="graSalProjeta" class="hide">
+                                    <div class="panel panel-bg panel-default">
+                                        <div class="panel-heading panel-heading-bg"><strong><span id="secBeneApos_grafico"></span></strong></div>
+                                        <div class="panel-body panel-body-bg">
+                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                            <div class="col-xs-8 col-sm-8 col-md-8">
+                                                <div class="col-xs-12 col-sm-12 col-md-12" align="left">
+                                                    <span style="font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; font-size: 90%; font-style: normal; color: #666">R$ em milhares</span>
+                                                </div>
+                                                <div class="row" id="CharBenContainer">
+                                                    <canvas id="ChartBen"></canvas>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-12 col-md-12" align="center">
+                                                    <span style="font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; font-size: 90%; font-style: normal; color: #666">Idade em anos</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-2 col-sm-2 col-md-2">
+                                                <div id="legend"></div>
+                                            </div>
+                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-bg panel-default hide" id="secEvolSaque">
+                                    <div class="panel-heading panel-heading-bg">
+                                        <strong><span id="secBeneApos_evolution"></span></strong>
+                                    </div>
+                                    <div class="panel-body panel-body-bg">
+                                        <div class="table-responsive" id="evolution"></div>
+                                    </div>
+                                </div>
+                                <div class="row step" id="stepFive">
+
+                                    <div class="col-xs-6 col-sm-6 col-md-6" style="padding: 0px 5px;">
+                                        <a id="stepFive-btn-up" type="button" class="btn btn-default col-xs-12 col-sm-12 col-md-12" role="button">
+                                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                                        </a>
+                                    </div>
+
+                                    <div class="col-xs-6 col-sm-6 col-md-6" style="padding: 0px 5px;">
+                                        <a id="stepFive-btn-down" type="button" class="btn btn-default col-xs-12 col-sm-12 col-md-12" role="button">
+                                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-xs-0 col-sm-0 col-md-0"></div>
+                        </div>
+                        <div class="row hide" id="secResgate">
+                            <div class="col-xs-0 col-sm-0 col-md-0"></div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="alert alert-info">Veja abaixo o saldo de resgate projetado.<!--<span id="secResgate_rProjetado"></span>--></div>
+                                <div class="panel panel-bg panel-default">
+                                    <div class="panel-heading panel-heading-bg">
+                                        <h4><span id="secResgate_rProjetado"></span></h4>
+                                    </div>
+                                    <div class="panel-body panel-body-bg">
+                                        <div class="table-responsive">
+                                            <table id="GridResg" class="table table-condensed" border="0">
+                                                <tr>
+                                                    <td align=right><span id="secResgate_rescPartBal"></span></td>
+                                                    <td align=left id="RescPartBal"></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td align=right><span id="secResgate_direito"></span></td>
+                                                    <td>
+                                                        <div class="progress" style="margin-bottom: 0px;">
+                                                            <div class="progress-bar progress-bar-success progress-bar-striped active" style="width:100%" id="PbarResgPartBal">
+                                                                <label id="lblPbarResgPartBal"></label>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td align=right><span id="secResgate_rescCpnyBal"></span></td>
+                                                    <td align=left id="RescCpnyBal"></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td align=right><span id="secResgate_direito">% Direito</span></td>
+                                                    <td>
+                                                        <div class="progress" style="margin-bottom: 0px;">
+                                                            <div class="progress-bar progress-bar-info progress-bar-striped active" style="width:15%" id="PbarResgCompnyBal">
+                                                                <label id="lblPbarResgCompnyBal"></label>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="active">
+                                                    <td align=right><strong><span id="secResgate_rescTotBal"></span></strong></td>
+                                                    <td align=left id="RescTotBal"><strong></strong></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="danger">
+                                                    <td align=right><strong><span id="secResgate_rescTax"></span></strong></td>
+                                                    <td align=left id="RescTax"><strong></strong></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="active">
+                                                    <td align=right><strong><span id="secResgate_rescNet"></span></strong></td>
+                                                    <td align=left id="RescNet"><strong></strong></td>
+                                                    <td></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row step" id="stepSix">
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <a id="stepSix-btn-up" type="button" class="btn btn-default col-xs-12 col-sm-12 col-md-12" role="button">
+                                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-0 col-sm-0 col-md-0"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+        </div>
+        <div class="row hide" id="secFoot">
+            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <footer>
+                    <p style=""><span id="CopyrigtText"></span></p>
+                </footer>
+            </div>
+            <div class="col-xs-0 col-sm-1 col-md-1"></div>
+        </div>
+
+    </div>
+
+    <script src="https://www.portal-hro.com.br/portal/jslib/SimuladorBeneficios/Simulador_Benef/js/ext_libs/jquery-1.10.2.min.js"></script>
+    <script src="https://www.portal-hro.com.br/portal/jslib/SimuladorBeneficios/Simulador_Benef/js/ext_libs/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="https://www.portal-hro.com.br/portal/jslib/SimuladorBeneficios/Simulador_Benef/js/ext_libs/jquery.ui.touch-punch.min.js"></script>
+    <script src="https://www.portal-hro.com.br/portal/jslib/SimuladorBeneficios/Simulador_Benef/js/ext_libs/jshashset-3.0.min.js"></script>
+    <script src="https://www.portal-hro.com.br/portal/jslib/SimuladorBeneficios/Simulador_Benef/js/ext_libs/jshashtable-3.0.min.js"></script>
+    <script src="https://www.portal-hro.com.br/portal/jslib/SimuladorBeneficios/Simulador_Benef/js/ext_libs/jquery.numberformatter-1.2.4.min.js"></script>
+
+    <!--<script src="https://www.portal-hro.com.br/portal/jslib/SimuladorBeneficios/Simulador_Benef/js/ext_libs/bootstrap.min.js"></script>-->
+
+    <script src="https://www.portal-hro.com.br/portal/jslib/SimuladorBeneficios/Simulador_Benef/js/ext_libs/Chart.min.js"></script>
+    <div id="config_scripts"></div>
+
+    <!--
+    <script src="../js/view-model.js"></script>-->
+    <script src="https://www.portal-hro.com.br/portal/jslib/SimuladorBeneficios/Backup/Simulador_Benef/js/base_scripts/view-model.js"></script>
+    <script>
+        var dataValue;
+        var param = ((getParameterByName('id') != null) ? getParameterByName('id') : getParameterByName('Id'));
+        if (param != null && param != undefined) {
+            dataValue = "{id: '" + param + "'}";
+        }
+        preloadSimulador();
+        //Função LoadSimulador está no arquivo:
+        //https://www.portal-hro.com.br/portal/jslib/SimuladorBeneficios/Backup/Simulador_Benef/js/base_scripts/view-model.js
+        function preloadSimulador() {
+            info_n = {d: "MDA1N2NhYy5hdGl2bw=="};
+            LoadSimulador(info_n);
+    
+        }
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+    </script>
+
+
+    
+</body>
+</html>

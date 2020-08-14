@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mobile>
+  <produtos>
+    <produto id="57">
+      <modulos>
+        <modulo id="Campanha">
+          <configs>
+            <config id="contas">
+              <conta id="01">1202;1204</conta>
+              <conta id="03">1402;1404</conta>
+            </config>
+          </configs>
+        </modulo>
+      </modulos>
+      
+    </produto>
+    <produto id="18">
+      <modulos>
+        <modulo id="Permissao">
+          <mensagens>
+            <mensagem id="EscondeSaldo">
+              S
+            </mensagem>
+          </mensagens>
+        </modulo>
+      </modulos>
+    </produto>
+    <produto id="61">
+      <modulos>
+        <modulo id="Emprestimo">
+          <mensagens>
+            <mensagem id="MsgEmprestimoFinal">
+              <texto>
+                
+              </texto>
+            </mensagem>
+            <mensagem id="MsgEmprestimoFinalSucesso">
+              <texto>
+                
+              </texto>
+            </mensagem>
+            <mensagem id="MsgEmprestimoDadosBancarios">
+              <texto>
+
+              </texto>
+            </mensagem>
+            <mensagem id="ExibeContrato">N</mensagem>
+            <mensagem id="Contrato"></mensagem>
+            
+          </mensagens>
+        </modulo>
+        <modulo id="EHRO-MESSAGE">
+          <mensagens>
+            <mensagem id="M286">
+              Sua situação não permite concessão de empréstimo.
+            </mensagem>
+            <mensagem id="M288">
+              Você não possui o tempo de vínculo ao plano exigido
+            </mensagem>
+            <mensagem id="M457">
+              Não foi possível efetuar a simulação, pois o contrato quitado não atingiu a carência mínima
+            </mensagem>
+            <mensagem id="M289">
+              Você não possui a idade mínima exigida
+            </mensagem>
+            <mensagem id="M363">
+              <![CDATA[<b>Você já possui um contrato pendente de aprovação!</b> <br> Para realizar uma nova simulação aguarde a finalização desse processo.]]>
+            </mensagem>
+            <mensagem id="M470">
+              Você não é elegível, pois existe um contrato ativo com a mesma data de crédito disponível para simulação.
+            </mensagem>
+            <mensagem id="M290">
+              Você possui empréstimos em andamento
+            </mensagem>
+            <mensagem id="M360">
+              Você não efetuou pagamento minimo do contrato ativo
+            </mensagem>
+            <mensagem id="M406">
+              Sua contribuição é inferior ao percentual permitido
+            </mensagem>
+            <mensagem id="M484">
+              Simulação e Contratação de Empréstimo Pessoal suspensas temporariamente!
+            </mensagem>
+            <mensagem id="EHRO-M291">
+              O período de solicitação de empréstimo está finalizado. Por favor, aguarde as próximas datas disponíveis.
+            </mensagem>
+            <mensagem id="EHRO-M304">
+              Excedeu a quantidade de contratos ativos. Operação não permitida. Selecione um contrato ativo para quitação.
+            </mensagem>
+            <mensagem id="EHRO-M319">
+              Limite máximo de empréstimo não é elegivel para um novo empréstimo.
+            </mensagem>
+            <mensagem id="EHRO-M320">
+              Limite máximo de parcela não é elegivel para um novo empréstimo.
+            </mensagem>
+            <mensagem id="EHRO-M468">
+              Indice de Correção Monetária não cadastrado para a referência.
+            </mensagem>
+            <mensagem id="EHRO-M469">
+              Participante não é elegível a empréstimo, pois a data da quitação da última parcela deverá ser até 24 meses antes da elegibilidade para aposentadoria pelo plano.
+            </mensagem>
+            <mensagem id="EHRO-M482">
+              Periodo de carência superior ao limite máximo permitido.
+            </mensagem>
+
+          </mensagens>
+        </modulo>
+      </modulos>
+    </produto>
+    
+  </produtos>
+</mobile>

@@ -1,0 +1,136 @@
+﻿.center {
+
+    text-align:center;
+}
+.text-menu > h6  {
+
+    margin-top: 0;
+    margin-bottom: 20px;
+    color:#fff;
+    
+
+}
+.item-menu {
+    padding-right: 10px;
+    padding-left: 10px;
+    text-align: center;
+
+}
+.item-menu > a {
+text-decoration:none;
+}
+
+.item-menu > a > img {
+width:100%
+}
+.panel-cadastro{
+    background-color: #e3e3e3!important;
+    color: #333!important;
+    text-align: left!important;
+    padding: 5px!important;
+    font-size: 13px!important;
+}
+.panel-cadastro-body{
+    padding: 10px 5px 10px!important;
+    background-color: #F0F0F0!important;
+    font-size: 13px!important;
+
+}
+.wd-auto label{
+    width: 150px;
+    padding-right: 10px;
+
+}
+.mt-2{
+    margin-top: 20px;
+}
+.bt-0 {
+    border-top: 0!important;
+}
+/*chatboot*/
+#cModal.modal{
+    overflow: auto!important;
+    margin-top: 70px;
+}
+.modal-dialog{
+    position: relative;
+    display: table;
+    overflow: auto;
+    width: auto;
+    min-width: 350px;
+    min-height: 450px;
+}
+.chat-modal .modal-header{
+    padding: 8px 19px;
+    background-color: #00AFEE;
+}
+.chat-modal .modal-header .close{
+    color: #ffffff;
+    margin-top: 0px;
+    opacity: unset;
+}
+.chat-modal .modal-body{
+    padding: 0px;
+    height: 450px;
+    width: 350px;
+}
+@media (min-width: 320px){
+    .modal-dialog {
+        margin: 0;
+        min-width: 318px;      
+    }
+    .chat-modal .modal-body{
+           padding: 0px;
+           height: 450px;
+           width: 318px;
+        }
+}
+@media (min-width: 360px){
+    .modal-dialog {
+        margin: 20px; 
+    }
+   
+}
+@media (min-width: 375px){
+    .modal-dialog {
+        margin: 28px; 
+    }
+   
+}
+@media (min-width: 411px){
+    .modal-dialog {
+        margin: 50px;      
+    }
+   
+}
+
+@media (min-width: 768px){
+    .modal-dialog {
+     margin: 30px auto;
+    }
+}
+.chat-logo {
+    height: 25px;
+    background-image: url("/img/57/header_img.png");
+    background-repeat: no-repeat;
+    background-size: auto;
+        }
+.chat-modal .modal-content{
+    border-color: #00AFEE;
+}
+.chat-btn{
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    position: fixed;
+    bottom: 200px;
+    right: 0px;
+    top: 33%;
+    z-index: 1999;
+}
+
+/*end chatboot*/
